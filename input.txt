@@ -9,7 +9,7 @@ class Foo
           // also ignored: { 
           int a = 1;
           // as is this: }
-       }
-    }
-} 
-//end of program 
+       } 
+   }
+}
+//end of program
