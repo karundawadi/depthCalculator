@@ -14,6 +14,37 @@ finally:
     test_file.close()
 
 # File read complete 
+
+# Defining the depth variable 
+depth = 0
+depth_carry = 0
+
+
 # Printing the contents of the file 
 for i in file_contents:
-    print(i)
+    if("{" in i or "}" in i):
+        if(i.find("//")!=-1 or i.find("\"")!=-1):
+            # Means that sentence consists of \\ or " mark 
+            # Using the relative position from the \\ to see if we need to count it or not
+            # Since \\ would mean a complete line 
+            if(i.find("{")<i.find("//")): # Means that if { comes before an \\ sign 
+                depth = depth +1
+            if(i.find("}")<i.find("//")): # Means that if } comes before an \\ sign 
+                depth = depth +1
+            
+            print('This below line')
+        else:    
+            if(i.find("(")!= -1 and i.find("}") != -1):
+                # Meaning both exist in a single line 
+                continue # Since both means that the depth is temporary and should not be counted 
+            
+            if(i.find("{")  != -1):
+                depth = depth + 1
+            
+            if(i.find("}") != -1):
+                depth_carry = depth_carry - 1     
+
+    print(f"{depth} {i}")
+    # Since we took } as depth_carry subtracting that and setting that to zero, for next rotation
+    depth = depth + depth_carry 
+    depth_carry = 0  
