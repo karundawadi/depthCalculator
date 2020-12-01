@@ -2,6 +2,7 @@
 # Net ID : kxd0099
 # Student ID : 1001660099
 # Date turend in : 11/30/2020
+# Operating system used MacOS 10.15
 
 import os as operting_system
 import re as regex_val
@@ -26,7 +27,7 @@ for i in file_contents:
         if(i.find("//")!=-1 or i.find("\"")!=-1):
             # Using regex here
             j = i
-            # Replaces all the values inside the "" with a whitespace
+            # Replaces all the values inside the " " with a whitespace so there is no confusion because of this values
             val_regex = "\".+\""
             j = regex_val.sub(val_regex," ",j)
 
